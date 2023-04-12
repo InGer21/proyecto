@@ -1,0 +1,285 @@
+:root{
+    --header-background-color: #02010F;
+    --chat-background-color: linear-gradient(131deg,#02010f 10%, #03052e 20%, #170b59 30%, #240d30 50%, #170b59 70%, #02010f 90%);
+    --bot-messages-color: #A250CE;
+    --user-messages-color: #47FFE7;
+    --text-color: #F1F0EA;
+    --messages-text-color: #000;
+    --input-background-color: #03052E;
+    --input-hover-color: #47FFE7;
+    --scrollbar-color: #47FFE7;
+}
+html {
+    /* every 1rem = 1px */
+    font-size: 6.25%;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+body{
+    background-image: url("../img/body-background.jpg")
+    
+}
+#inactive{
+    display: none;
+}
+.global-container{
+    font-size: 16rem;
+    color: var(--text-color);
+    position: relative;
+    z-index: 1;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+.chat-container{
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    height: 640px;
+    margin: auto; /*this is enough to center the div*/
+    transition: 0.4s;
+}
+/*CHAT HEADER THAT CONTAINS THE BOT NAME AND DESCRIPTION*/
+.chat-header{
+    height: 64px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 8rem 8rem 0 0;
+    background-color: var(--header-background-color);
+}
+.chat-bot-info{
+    display: flex;
+    width: 100%;
+}
+.chat-bot-icon{
+    align-self: center;
+    padding: 5rem 10rem;
+    border-radius: 50%;
+}
+.chat-bot-icon img{
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+}
+.chat-title{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+.chat-title h2{
+    font-size: 16rem;
+}
+.chat-title p{
+    font-size: 14rem;
+}
+.chat-close-icon{
+    cursor: pointer;
+    align-self: center;
+    padding: 0 10rem;
+}
+
+/*CHAT MESSAGES SECTION*/
+.chat-info-container{
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: var(--chat-background-color);
+    font-size: 14rem;
+}
+.chat-messages-container{
+    display: inline-block;
+    width: 100%;
+    height: 512px; /*This is to not overlap the input section, so the scrollbar looks good*/
+    overflow-x: hidden;
+    overflow-y: scroll;
+    overscroll-behavior-y: contain;
+    color: var(--messages-text-color)
+}
+.messages-container {
+    display: flex;
+    flex-direction: column;
+}
+.chat-scrollbar::-webkit-scrollbar{
+    background: transparent;
+    width: 6px;
+}
+.chat-scrollbar::-webkit-scrollbar-thumb{
+    background: var(--scrollbar-color);
+}
+.chat-scrollbar::-webkit-scrollbar-thumb:hover{
+    opacity: 0.1;
+}
+.chat-scrollbar::-webkit-scrollbar-track{
+    background: transparent;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+
+.automated-messages{
+    width: 60%;
+    word-wrap: break-word;
+    padding: 8px 12px;
+    border-radius: 12px 12px 12px 0;
+    margin: 12px 12px;
+    background-color: var(--bot-messages-color);
+    color: var(--text-color);
+    box-shadow: 0px 2px 10px 0px #A250CE;
+}
+
+.user-messages{
+    width: 60%;
+    word-wrap: break-word;
+    padding: 8px 12px;
+    border-radius: 12px 12px 0 12px;
+    margin: 12px 12px 12px auto;
+    background-color: var(--user-messages-color);
+    box-shadow: 0px 2px 10px 0px #47FFE7;
+}
+.chat-input-area{
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    z-index: 10;
+    width: 100%;
+    height: 64px;
+    padding: 12px;
+    background-color: var(--chat-background-color);
+    
+}
+.chat-input-area form{
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+.chat-input-area input {
+    width: calc(100% - 32px);
+    height: 100%;
+    padding: 0 8rem;
+    border-radius: 8rem;
+    color: var(--text-color);
+    background-color: var(--input-background-color);
+    border: 1px solid #3F48F3;
+    font-size: 14rem;
+    transition: 0.2s;
+}
+.chat-input-area input:hover{
+    border: 1px solid var(--input-hover-color);
+}
+.chat-input-area input:focus{
+    border: 1px solid var(--input-hover-color);
+    outline: none
+}
+::placeholder{
+    color: var(--text-color);
+}
+.send-button{
+    width: 32px;
+    height: 32px;
+    margin-left: 4px;
+    cursor: pointer;
+    border: none;
+    background: url("../img/send-button.svg") no-repeat center;
+    background-size: cover;
+    transition: 0.1s ease-in-out;
+}
+.send-button:active{
+    transform: scale(0.8);
+}
+
+.bot-container{
+    width: 70vw;
+    height: 70vh;
+    margin: 0 auto;
+}
+.bot-popup{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+}
+.bot-background{
+    background: url("../img/saludo.gif");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transition: 0.1s;
+}
+.button-container{
+    display: flex;
+    justify-content: center;
+}
+.start-chat-button{
+    display: inline-block;
+    padding: 25px 40px;
+    color: #47FFE7;
+    background: transparent;
+    letter-spacing: 3px;
+    font-size: 26px;
+    border: none;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+#start-chat-button-hovered{
+    color: #255784;
+    background: #47FFE7; /*set previous font color to background on hover*/
+    box-shadow: 0 0 10px #47FFE7, 0 0 20px #47FFE7, 0 0 35px #47FFE7;
+    transition-delay: 1.4s;
+}
+
+.start-chat-button span{
+    display: block;
+    position: absolute;
+}
+.start-chat-button span:nth-child(1){
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #47FFE7);
+}
+#span-animation-1{
+    left: 100%;
+    transition: 0.75s;
+}
+.start-chat-button span:nth-child(2){
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, #47FFE7);
+}
+#span-animation-2{
+    top: 100%;
+    transition: 0.75s;
+    transition-delay: 0.15s;
+}
+.start-chat-button span:nth-child(3){
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg, transparent, #47FFE7);
+}
+#span-animation-3{
+    right: 100%;
+    transition: 0.75s;
+    transition-delay: 0.35s;
+}
+.start-chat-button span:nth-child(4){
+    bottom: -100%;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg, transparent, #47FFE7);
+}
+#span-animation-4{
+    bottom: 100%;
+    transition: 1s;
+    transition-delay: 0.50s;
+}
